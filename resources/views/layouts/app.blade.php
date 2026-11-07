@@ -8,10 +8,24 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>@yield('title', 'Techcare')</title>
+    <script>
+    document.documentElement.setAttribute('data-bs-theme', localStorage.getItem('theme') || 'light');
+    </script>
 
     <link rel="icon" href="{{ asset('architectui/favicon.ico') }}">
     <link href="{{ asset('architectui/assets/styles/main.css') }}" rel="stylesheet">
     @stack('styles')
+    <style>
+    [data-bs-theme="dark"] .app-main__outer { background: #14171a; }
+    [data-bs-theme="dark"] .app-footer { background: #1b1f23 !important; color: #adb5bd; }
+    [data-bs-theme="dark"] .card { background-color: #212529; }
+    [data-bs-theme="dark"] .card-header { background-color: #2b3035 !important; color: #dee2e6; }
+    [data-bs-theme="dark"] .app-page-title { background: transparent; }
+    [data-bs-theme="dark"] .app-page-title,
+    [data-bs-theme="dark"] .page-title-heading,
+    [data-bs-theme="dark"] .widget-heading { color: #dee2e6; }
+    [data-bs-theme="dark"] .table { --bs-table-color: #dee2e6; }
+    </style>
 
     <script defer src="{{ asset('architectui/assets/scripts/main.js') }}"></script>
     <script defer src="{{ asset('architectui/assets/scripts/demo.js') }}"></script>
@@ -59,6 +73,9 @@
             </div>
 
             <div class="app-header-right">
+                 <button type="button" id="theme-toggle" class="btn btn-sm btn-outline-secondary me-3" title="Ganti tema">
+                    <i class="fa fa-moon" id="theme-icon"></i>
+                </button>
                 <div class="header-btn-lg pe-0">
                     <div class="widget-content p-0">
                         <div class="widget-content-wrapper">
@@ -136,4 +153,29 @@
     </div>
 </div>
 </body>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const html = document.documentElement;
+        const header = document.querySelector('.app-header');
+        const sidebar = document.querySelector('.app-sidebar');
+        const icon = document.getElementById('theme-icon');
+
+        function applyTheme(theme) {
+            const dark = theme === 'dark';
+            html.setAttribute('data-bs-theme', theme);
+            header.classList.toggle('bg-dark', dark);
+            header.classList.toggle('header-text-light', dark);
+            sidebar.classList.toggle('bg-dark', dark);
+            sidebar.classList.toggle('sidebar-text-light', dark);
+            icon.className = dark ? 'fa fa-sun' : 'fa fa-moon';
+            localStorage.setItem('theme', theme);
+        }
+
+        applyTheme(localStorage.getItem('theme') || 'light');
+
+        document.getElementById('theme-toggle').addEventListener('click', function () {
+            applyTheme(html.getAttribute('data-bs-theme') === 'dark' ? 'light' : 'dark');
+        });
+    });
+</script>
 </html>
