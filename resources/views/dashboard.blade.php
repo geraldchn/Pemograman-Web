@@ -4,6 +4,13 @@
 
 @section('content')
 
+    @if (session('success'))
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            {{ session('success') }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    @endif
+
     {{-- Judul halaman --}}
     <div class="app-page-title">
         <div class="page-title-wrapper">
@@ -13,7 +20,7 @@
                 </div>
                 <div>
                     Dashboard
-                    <div class="page-title-subheading">Ringkasan data Techcare.</div>
+                    <div class="page-title-subheading">Techcare data overview.</div>
                 </div>
             </div>
         </div>

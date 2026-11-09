@@ -26,3 +26,6 @@ Homestead.json
 Homestead.yaml
 Thumbs.db
 /architectui-html-theme-free/
+
+# Local SQLite file (project uses MySQL)
+/db_techcare

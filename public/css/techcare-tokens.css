@@ -1,0 +1,89 @@
+/* ==========================================================================
+   Techcare Design Tokens
+   Single source of truth for colors, radius, and shadows.
+   Use these CSS variables in new components instead of hard-coded hex values.
+   Live reference: /style-guide
+   ========================================================================== */
+
+:root {
+    /* --- Brand --- */
+    --tc-primary: #0a0a0a;          /* Black  - main brand, headings, primary buttons */
+    --tc-secondary: #ffffff;        /* White  - backgrounds, text on dark */
+    --tc-accent: #2563eb;           /* Blue   - links, highlights, focus, CTA accents */
+    --tc-accent-hover: #1d4ed8;
+    --tc-accent-soft: #dbeafe;      /* tinted background for accent */
+
+    /* --- Neutrals --- */
+    --tc-gray-50: #f9fafb;
+    --tc-gray-100: #f3f4f6;
+    --tc-gray-200: #e5e7eb;
+    --tc-gray-300: #d1d5db;
+    --tc-gray-500: #6b7280;         /* muted text */
+    --tc-gray-700: #374151;
+    --tc-gray-900: #111827;
+
+    /* --- Semantic (status) --- */
+    --tc-success: #16a34a;
+    --tc-warning: #d97706;
+    --tc-danger: #dc2626;
+    --tc-info: var(--tc-accent);
+
+    /* --- Surfaces & text (theme-aware) --- */
+    --tc-bg: var(--tc-gray-50);
+    --tc-surface: #ffffff;
+    --tc-border: var(--tc-gray-200);
+    --tc-text: var(--tc-gray-900);
+    --tc-text-muted: var(--tc-gray-500);
+
+    /* --- Shape --- */
+    --tc-radius-sm: 6px;
+    --tc-radius: 10px;
+    --tc-radius-lg: 16px;
+    --tc-shadow: 0 1px 3px rgba(0, 0, 0, .08), 0 4px 12px rgba(0, 0, 0, .06);
+}
+
+[data-bs-theme="dark"] {
+    --tc-primary: #ffffff;          /* in dark mode, "primary" flips to white */
+    --tc-secondary: #0a0a0a;
+    --tc-accent: #60a5fa;
+    --tc-accent-hover: #93c5fd;
+    --tc-accent-soft: #1e3a8a;
+
+    --tc-bg: #14171a;
+    --tc-surface: #212529;
+    --tc-border: #343a40;
+    --tc-text: #e5e7eb;
+    --tc-text-muted: #9ca3af;
+
+    --tc-success: #4ade80;
+    --tc-warning: #fbbf24;
+    --tc-danger: #f87171;
+}
+
+/* --- Buttons (use these for new pages) --- */
+.tc-btn {
+    display: inline-flex; align-items: center; gap: .5rem;
+    padding: .55rem 1.1rem; border-radius: var(--tc-radius-sm);
+    font-weight: 600; border: 1px solid transparent; cursor: pointer;
+    transition: background-color .15s, border-color .15s, color .15s;
+    text-decoration: none;
+}
+.tc-btn:focus-visible { outline: 3px solid var(--tc-accent-soft); outline-offset: 2px; }
+.tc-btn-primary   { background: var(--tc-primary); color: var(--tc-secondary); }
+.tc-btn-primary:hover { opacity: .85; color: var(--tc-secondary); }
+.tc-btn-accent    { background: var(--tc-accent); color: #fff; }
+.tc-btn-accent:hover { background: var(--tc-accent-hover); color: #fff; }
+.tc-btn-outline   { background: transparent; color: var(--tc-text); border-color: var(--tc-text); }
+.tc-btn-outline:hover { background: var(--tc-text); color: var(--tc-surface); }
+.tc-btn-danger    { background: var(--tc-danger); color: #fff; }
+
+/* --- Badges --- */
+.tc-badge {
+    display: inline-block; padding: .2rem .6rem; border-radius: 999px;
+    font-size: .75rem; font-weight: 600;
+}
+.tc-badge-accent  { background: var(--tc-accent-soft); color: var(--tc-accent); }
+.tc-badge-success { background: color-mix(in srgb, var(--tc-success) 15%, transparent); color: var(--tc-success); }
+.tc-badge-warning { background: color-mix(in srgb, var(--tc-warning) 15%, transparent); color: var(--tc-warning); }
+.tc-badge-danger  { background: color-mix(in srgb, var(--tc-danger) 15%, transparent); color: var(--tc-danger); }
+.tc-badge-dark    { background: var(--tc-primary); color: var(--tc-secondary); }

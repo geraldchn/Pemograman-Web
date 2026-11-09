@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <title>@yield('title', 'Techcare')</title>
+    <script>
+        document.documentElement.setAttribute('data-bs-theme', localStorage.getItem('theme') || 'light');
+    </script>
+    <link rel="icon" href="{{ asset('architectui/favicon.ico') }}">
+    <link href="{{ asset('architectui/assets/styles/main.css') }}" rel="stylesheet">
+    <style>
+        .auth-box { max-width: 460px; width: 100%; }
+        .auth-brand { text-align: center; color: #fff; margin-bottom: 1.25rem; }
+        .auth-brand img { height: 44px; }
+        .auth-brand h3 { font-weight: 700; margin: .5rem 0 0; }
+        .auth-brand p { opacity: .85; margin: 0; }
+        [data-bs-theme="dark"] .auth-card { background-color: #212529; }
+    </style>
+</head>
+<body>
+<div class="app-container app-theme-white">
+    <div class="h-100 bg-plum-plate bg-animation" style="min-height:100vh">
+        <div class="d-flex justify-content-center align-items-center p-3" style="min-height:100vh">
+            <div class="auth-box">
+                <div class="auth-brand">
+                    <img src="{{ asset('architectui/assets/images/logo-inverse.png') }}" alt="Techcare">
+                    <h3>Techcare</h3>
+                    <p>Laptop service &amp; maintenance, made easy.</p>
+                </div>
+
+                <div class="card auth-card shadow">
+                    <div class="card-body p-4">
+                        @yield('content')
+                    </div>
+                </div>
+
+                <p class="text-center text-white-50 mt-3 mb-0">&copy; {{ date('Y') }} Techcare</p>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

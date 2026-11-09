@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="id">
+<html lang="en">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -14,6 +14,7 @@
 
     <link rel="icon" href="{{ asset('architectui/favicon.ico') }}">
     <link href="{{ asset('architectui/assets/styles/main.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/techcare-tokens.css') }}" rel="stylesheet">
     @stack('styles')
     <style>
     [data-bs-theme="dark"] .app-main__outer { background: #14171a; }
@@ -73,7 +74,7 @@
             </div>
 
             <div class="app-header-right">
-                 <button type="button" id="theme-toggle" class="btn btn-sm btn-outline-secondary me-3" title="Ganti tema">
+                 <button type="button" id="theme-toggle" class="btn btn-sm btn-outline-secondary me-3" title="Toggle theme">
                     <i class="fa fa-moon" id="theme-icon"></i>
                 </button>
                 <div class="header-btn-lg pe-0">
@@ -82,20 +83,23 @@
                             <div class="widget-content-left">
                                 <div class="btn-group">
                                     <a data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="p-0 btn">
-                                        <img width="42" class="rounded-circle"
-                                             src="{{ asset('architectui/assets/images/avatars/1.jpg') }}" alt="">
+                                        <img width="42" height="42" class="rounded-circle" style="object-fit:cover"
+                                             src="{{ auth()->user()->avatarUrl() }}" alt="">
                                         <i class="fa fa-angle-down ms-2 opacity-8"></i>
                                     </a>
                                     <div tabindex="-1" role="menu" aria-hidden="true" class="dropdown-menu dropdown-menu-right">
-                                        <button type="button" class="dropdown-item">Profil</button>
+                                        <a href="{{ route('profile') }}" class="dropdown-item">Profile</a>
                                         <div tabindex="-1" class="dropdown-divider"></div>
-                                        <button type="button" class="dropdown-item">Keluar</button>
+                                        <form method="POST" action="{{ route('logout') }}">
+                                            @csrf
+                                            <button type="submit" class="dropdown-item">Log out</button>
+                                        </form>
                                     </div>
                                 </div>
                             </div>
                             <div class="widget-content-left ms-3 header-user-info">
-                                <div class="widget-heading">Admin Techcare</div>
-                                <div class="widget-subheading">Administrator</div>
+                                <div class="widget-heading">{{ auth()->user()->name }}</div>
+                                <div class="widget-subheading">{{ auth()->user()->roleLabel() }}</div>
                             </div>
                         </div>
                     </div>
@@ -125,6 +129,28 @@
                         <li>
                             <a href="{{ url('/') }}" class="{{ request()->is('/') ? 'mm-active' : '' }}">
                                 <i class="metismenu-icon pe-7s-rocket"></i> Dashboard
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="{{ route('profile') }}" class="{{ request()->routeIs('profile*') ? 'mm-active' : '' }}">
+                                <i class="metismenu-icon pe-7s-user"></i> My Profile
+                            </a>
+                        </li>
+
+                        @if (auth()->user()->hasRole('admin'))
+                            <li class="app-sidebar__heading">Administration</li>
+                            <li>
+                                <a href="{{ route('users.index') }}" class="{{ request()->routeIs('users.*') ? 'mm-active' : '' }}">
+                                    <i class="metismenu-icon pe-7s-users"></i> Manage Users
+                                </a>
+                            </li>
+                        @endif
+
+                        <li class="app-sidebar__heading">Developer</li>
+                        <li>
+                            <a href="{{ route('style-guide') }}" class="{{ request()->routeIs('style-guide') ? 'mm-active' : '' }}">
+                                <i class="metismenu-icon pe-7s-paint-bucket"></i> Style Guide
                             </a>
                         </li>
 
