@@ -12,6 +12,8 @@
     --tc-accent: #2563eb;           /* Blue   - links, highlights, focus, CTA accents */
     --tc-accent-hover: #1d4ed8;
     --tc-accent-soft: #dbeafe;      /* tinted background for accent */
+    --tc-primary-rgb: 10, 10, 10;
+    --tc-accent-rgb: 37, 99, 235;
 
     /* --- Neutrals --- */
     --tc-gray-50: #f9fafb;
@@ -23,8 +25,8 @@
     --tc-gray-900: #111827;
 
     /* --- Semantic (status) --- */
-    --tc-success: #16a34a;
-    --tc-warning: #d97706;
+    --tc-success: #15803d;
+    --tc-warning: #b45309;
     --tc-danger: #dc2626;
     --tc-info: var(--tc-accent);
 
@@ -48,6 +50,8 @@
     --tc-accent: #60a5fa;
     --tc-accent-hover: #93c5fd;
     --tc-accent-soft: #1e3a8a;
+    --tc-primary-rgb: 255, 255, 255;
+    --tc-accent-rgb: 96, 165, 250;
 
     --tc-bg: #14171a;
     --tc-surface: #212529;

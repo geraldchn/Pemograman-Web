@@ -12,8 +12,8 @@
 
         <div class="mb-3">
             <label for="email" class="form-label">Email</label>
-            <input id="email" name="email" type="email" value="{{ old('email') }}" required autofocus
-                   class="form-control @error('email') is-invalid @enderror" placeholder="name@email.com">
+            <input id="email" name="email" type="text" value="{{ old('email') }}" required autofocus
+                   class="form-control @error('email') is-invalid @enderror" placeholder="Email or username">
             @error('email')<div class="invalid-feedback">{{ $message }}</div>@enderror
         </div>
 

@@ -12,9 +12,10 @@
     document.documentElement.setAttribute('data-bs-theme', localStorage.getItem('theme') || 'light');
     </script>
 
-    <link rel="icon" href="{{ asset('architectui/favicon.ico') }}">
+    <link rel="icon" type="image/png" href="{{ asset('images/logo/favicon.png') }}">
     <link href="{{ asset('architectui/assets/styles/main.css') }}" rel="stylesheet">
     <link href="{{ asset('css/techcare-tokens.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/techcare-theme.css') }}" rel="stylesheet">
     @stack('styles')
     <style>
     [data-bs-theme="dark"] .app-main__outer { background: #14171a; }

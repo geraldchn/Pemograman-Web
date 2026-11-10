@@ -1,0 +1,268 @@
+/* ==========================================================================
+   Techcare Theme - re-skins ArchitectUI with the 3 brand colors
+   Black (--tc-primary) / White (--tc-secondary) / Blue (--tc-accent).
+   Loaded AFTER architectui main.css and techcare-tokens.css.
+   Do not hard-code colors here; use the --tc-* tokens.
+   ========================================================================== */
+
+/* ---------- 1. Bootstrap variables ---------- */
+:root,
+[data-bs-theme=light],
+[data-bs-theme=dark] {
+    --bs-primary: var(--tc-primary);
+    --bs-primary-rgb: var(--tc-primary-rgb);
+    --bs-link-color: var(--tc-accent);
+    --bs-link-color-rgb: var(--tc-accent-rgb);
+    --bs-link-hover-color: var(--tc-accent-hover);
+    --bs-info: var(--tc-accent);
+    --bs-info-rgb: var(--tc-accent-rgb);
+    --bs-success: var(--tc-success);
+    --bs-warning: var(--tc-warning);
+    --bs-danger: var(--tc-danger);
+    --bs-border-color: var(--tc-border);
+    --bs-focus-ring-color: rgba(var(--tc-accent-rgb), .25);
+
+    /* solid fills that always carry white text (do not flip in dark mode) */
+    --tc-fill-ink: #0a0a0a;
+    --tc-fill-accent: #2563eb;
+}
+[data-bs-theme=dark] { --tc-fill-ink: #262b31; }
+
+body { color: var(--tc-text); }
+.app-theme-white.app-container { background: var(--tc-bg); }
+.app-theme-white .app-sidebar,
+.app-theme-white .app-header,
+.app-theme-white .app-footer .app-footer__inner { background: var(--tc-surface); }
+.app-theme-white .app-page-title { background: transparent; }
+
+/* ---------- 2. Buttons ---------- */
+.btn-primary {
+    --bs-btn-color: var(--tc-secondary);
+    --bs-btn-bg: var(--tc-primary);
+    --bs-btn-border-color: var(--tc-primary);
+    --bs-btn-hover-color: var(--tc-secondary);
+    --bs-btn-hover-bg: color-mix(in srgb, var(--tc-primary) 82%, var(--tc-secondary));
+    --bs-btn-hover-border-color: color-mix(in srgb, var(--tc-primary) 82%, var(--tc-secondary));
+    --bs-btn-active-color: var(--tc-secondary);
+    --bs-btn-active-bg: color-mix(in srgb, var(--tc-primary) 70%, var(--tc-secondary));
+    --bs-btn-active-border-color: color-mix(in srgb, var(--tc-primary) 70%, var(--tc-secondary));
+    --bs-btn-disabled-color: var(--tc-secondary);
+    --bs-btn-disabled-bg: var(--tc-primary);
+    --bs-btn-disabled-border-color: var(--tc-primary);
+    --bs-btn-focus-shadow-rgb: var(--tc-accent-rgb);
+}
+.btn-secondary,
+.btn-light {
+    --bs-btn-color: var(--tc-text);
+    --bs-btn-bg: var(--tc-surface);
+    --bs-btn-border-color: var(--tc-text);
+    --bs-btn-hover-color: var(--tc-text);
+    --bs-btn-hover-bg: var(--tc-gray-100);
+    --bs-btn-hover-border-color: var(--tc-text);
+    --bs-btn-active-color: var(--tc-text);
+    --bs-btn-active-bg: var(--tc-gray-200);
+    --bs-btn-active-border-color: var(--tc-text);
+    --bs-btn-disabled-color: var(--tc-text-muted);
+    --bs-btn-disabled-bg: var(--tc-surface);
+    --bs-btn-disabled-border-color: var(--tc-border);
+    --bs-btn-focus-shadow-rgb: var(--tc-accent-rgb);
+}
+[data-bs-theme=dark] .btn-secondary,
+[data-bs-theme=dark] .btn-light {
+    --bs-btn-hover-bg: rgba(255, 255, 255, .08);
+    --bs-btn-active-bg: rgba(255, 255, 255, .14);
+}
+.btn-info,
+.btn-focus,
+.btn-alternate,
+.btn-gradient-primary {
+    --bs-btn-color: #fff;
+    --bs-btn-bg: var(--tc-fill-accent);
+    --bs-btn-border-color: var(--tc-fill-accent);
+    --bs-btn-hover-color: #fff;
+    --bs-btn-hover-bg: #1d4ed8;
+    --bs-btn-hover-border-color: #1d4ed8;
+    --bs-btn-active-color: #fff;
+    --bs-btn-active-bg: #1e40af;
+    --bs-btn-active-border-color: #1e40af;
+    --bs-btn-disabled-color: #fff;
+    --bs-btn-disabled-bg: var(--tc-fill-accent);
+    --bs-btn-disabled-border-color: var(--tc-fill-accent);
+    --bs-btn-focus-shadow-rgb: var(--tc-accent-rgb);
+}
+.btn-gradient-primary { background-image: none; }
+.btn-dark {
+    --bs-btn-bg: var(--tc-fill-ink);
+    --bs-btn-border-color: var(--tc-fill-ink);
+    --bs-btn-color: #fff;
+    --bs-btn-hover-bg: #262626;
+    --bs-btn-hover-border-color: #262626;
+}
+.btn-success { --bs-btn-bg: var(--tc-success); --bs-btn-border-color: var(--tc-success); --bs-btn-color: #fff;
+    --bs-btn-hover-bg: color-mix(in srgb, var(--tc-success) 85%, #000); --bs-btn-hover-border-color: color-mix(in srgb, var(--tc-success) 85%, #000); --bs-btn-hover-color: #fff; }
+.btn-warning { --bs-btn-bg: var(--tc-warning); --bs-btn-border-color: var(--tc-warning); --bs-btn-color: #fff;
+    --bs-btn-hover-bg: color-mix(in srgb, var(--tc-warning) 85%, #000); --bs-btn-hover-border-color: color-mix(in srgb, var(--tc-warning) 85%, #000); --bs-btn-hover-color: #fff; }
+.btn-danger { --bs-btn-bg: var(--tc-danger); --bs-btn-border-color: var(--tc-danger); --bs-btn-color: #fff;
+    --bs-btn-hover-bg: color-mix(in srgb, var(--tc-danger) 85%, #000); --bs-btn-hover-border-color: color-mix(in srgb, var(--tc-danger) 85%, #000); --bs-btn-hover-color: #fff; }
+[data-bs-theme=dark] .btn-success,
+[data-bs-theme=dark] .btn-warning,
+[data-bs-theme=dark] .btn-danger { --bs-btn-color: #0a0a0a; --bs-btn-hover-color: #0a0a0a; }
+
+.btn-outline-primary {
+    --bs-btn-color: var(--tc-text);
+    --bs-btn-border-color: var(--tc-text);
+    --bs-btn-hover-color: var(--tc-secondary);
+    --bs-btn-hover-bg: var(--tc-primary);
+    --bs-btn-hover-border-color: var(--tc-primary);
+    --bs-btn-active-color: var(--tc-secondary);
+    --bs-btn-active-bg: var(--tc-primary);
+    --bs-btn-active-border-color: var(--tc-primary);
+    --bs-btn-focus-shadow-rgb: var(--tc-accent-rgb);
+}
+.btn-outline-secondary {
+    --bs-btn-color: var(--tc-text-muted);
+    --bs-btn-border-color: var(--tc-border);
+    --bs-btn-hover-color: var(--tc-text);
+    --bs-btn-hover-bg: var(--tc-gray-100);
+    --bs-btn-hover-border-color: var(--tc-text-muted);
+    --bs-btn-active-color: var(--tc-text);
+    --bs-btn-active-bg: var(--tc-gray-200);
+}
+[data-bs-theme=dark] .btn-outline-secondary { --bs-btn-hover-bg: rgba(255,255,255,.08); --bs-btn-active-bg: rgba(255,255,255,.14); }
+.btn-link { --bs-btn-color: var(--tc-accent); --bs-btn-hover-color: var(--tc-accent-hover); }
+
+/* ---------- 3. Gradient fills -> flat brand fills ---------- */
+.bg-gradient, .bg-warm-flame, .bg-night-fade, .bg-sunny-morning, .bg-tempting-azure, .bg-amy-crisp,
+.bg-heavy-rain, .bg-mean-fruit, .bg-malibu-beach, .bg-deep-blue, .bg-ripe-malin, .bg-arielle-smile,
+.bg-plum-plate, .bg-happy-fisher, .bg-happy-itmeo, .bg-mixed-hopes, .bg-strong-bliss, .bg-grow-early,
+.bg-love-kiss, .bg-premium-dark, .bg-happy-green, .bg-vicious-stance, .bg-midnight-bloom, .bg-night-sky,
+.bg-royal, .bg-asteroid {
+    background-image: none !important;
+    background-color: var(--tc-fill-ink) !important;
+}
+.bg-arielle-smile, .bg-happy-itmeo, .bg-night-sky, .bg-royal, .bg-deep-blue,
+.bg-tempting-azure, .bg-malibu-beach, .bg-mixed-hopes {
+    background-color: var(--tc-fill-accent) !important;
+}
+/* gradient text icons (page titles) -> solid accent */
+.icon-gradient[class*="bg-"] {
+    background: none !important;
+    -webkit-text-fill-color: var(--tc-accent);
+    color: var(--tc-accent);
+}
+
+/* ---------- 4. Sidebar ---------- */
+.app-sidebar__heading { color: var(--tc-text-muted); }
+.vertical-nav-menu li a { color: var(--tc-text); }
+.vertical-nav-menu li a:hover,
+.vertical-nav-menu ul > li > a:hover {
+    background: color-mix(in srgb, var(--tc-text) 7%, transparent);
+    color: var(--tc-text);
+}
+.vertical-nav-menu li a.mm-active,
+.vertical-nav-menu ul > li > a.mm-active {
+    background: var(--tc-accent-soft);
+    color: var(--tc-accent);
+    font-weight: 700;
+}
+/* dark-mode sidebar (layout adds .sidebar-text-light) */
+.app-sidebar.sidebar-text-light .vertical-nav-menu li a { color: var(--tc-text); }
+.app-sidebar.sidebar-text-light .vertical-nav-menu li a:hover { background: rgba(255,255,255,.08); color: #fff; }
+.app-sidebar.sidebar-text-light .vertical-nav-menu li a.mm-active { background: var(--tc-accent-soft); color: #bfdbfe; }
+.app-sidebar.sidebar-text-light .app-sidebar__heading { color: var(--tc-text-muted); }
+
+/* ---------- 5. Header, logo wordmark, hamburger ---------- */
+.app-header__logo .logo-src {
+    background: url("../images/logo/icon-text-on-light.png") no-repeat left center / contain !important;
+    width: 128px !important;
+    height: 26px;
+}
+[data-bs-theme=dark] .app-header__logo .logo-src {
+    background-image: url("../images/logo/icon-text-on-dark.png") !important;
+}
+/* collapsed sidebar -> icon only */
+.closed-sidebar .app-sidebar:not(:hover) .app-header__logo .logo-src {
+    background-image: url("../images/logo/icon-on-light.png") !important;
+    width: 28px !important;
+}
+[data-bs-theme=dark].closed-sidebar .app-sidebar:not(:hover) .app-header__logo .logo-src,
+[data-bs-theme=dark] .closed-sidebar .app-sidebar:not(:hover) .app-header__logo .logo-src {
+    background-image: url("../images/logo/icon-on-dark.png") !important;
+}
+.hamburger.is-active .hamburger-inner,
+.hamburger.is-active .hamburger-inner::after,
+.hamburger.is-active .hamburger-inner::before { background-color: var(--tc-text); }
+.page-title-icon { background: var(--tc-surface); }
+
+/* ---------- 6. Forms ---------- */
+.form-control:focus,
+.form-select:focus {
+    border-color: var(--tc-accent);
+    box-shadow: 0 0 0 .2rem rgba(var(--tc-accent-rgb), .25);
+}
+.form-check-input:checked,
+.form-check-input[type=checkbox]:indeterminate {
+    background-color: var(--tc-fill-accent);
+    border-color: var(--tc-fill-accent);
+}
+.form-check-input:focus { border-color: var(--tc-accent); box-shadow: 0 0 0 .2rem rgba(var(--tc-accent-rgb), .25); }
+.form-range::-webkit-slider-thumb { background: var(--tc-fill-accent); }
+.form-range::-moz-range-thumb { background: var(--tc-fill-accent); }
+.form-heading { color: var(--tc-text); }
+
+/* ---------- 7. Navigation: tabs, pills, pagination, dropdown ---------- */
+.nav-tabs .nav-link:hover,
+.nav-tabs .nav-link.active,
+.tabs-animated .nav-link:hover,
+.tabs-animated .nav-link.active,
+.card-header > .nav .nav-link:hover,
+.card-header > .nav .nav-link.active { color: var(--tc-accent); }
+.tabs-animated .nav-link::before,
+.card-header > .nav .nav-link::before { background: var(--tc-accent); }
+.nav-pills .nav-link.active { background: var(--tc-primary); color: var(--tc-secondary); }
+.nav-pills .nav-link:hover { color: var(--tc-accent); }
+
+.pagination {
+    --bs-pagination-color: var(--tc-text);
+    --bs-pagination-bg: var(--tc-surface);
+    --bs-pagination-border-color: var(--tc-border);
+    --bs-pagination-hover-color: var(--tc-accent);
+    --bs-pagination-hover-bg: var(--tc-gray-100);
+    --bs-pagination-hover-border-color: var(--tc-border);
+    --bs-pagination-focus-color: var(--tc-accent);
+    --bs-pagination-active-color: var(--tc-secondary);
+    --bs-pagination-active-bg: var(--tc-primary);
+    --bs-pagination-active-border-color: var(--tc-primary);
+}
+.pagination li.active a { background: var(--tc-primary); border-color: var(--tc-primary); color: var(--tc-secondary); }
+
+.dropdown-menu { --bs-dropdown-link-active-bg: var(--tc-accent-soft); --bs-dropdown-link-active-color: var(--tc-accent); }
+.dropdown-menu .dropdown-header { color: var(--tc-text-muted); }
+.dropdown-menu-hover-link .dropdown-item:hover,
+.dropdown-menu-hover-primary .dropdown-item:hover { background: var(--tc-accent-soft); color: var(--tc-accent); }
+.dropdown-item { color: var(--tc-text); }
+.dropdown-item:hover, .dropdown-item:focus { background: color-mix(in srgb, var(--tc-text) 7%, transparent); color: var(--tc-text); }
+
+/* ---------- 8. Misc components ---------- */
+.border-primary { border-color: var(--tc-primary) !important; }
+.progress, .progress-stacked { --bs-progress-bar-bg: var(--tc-fill-accent); }
+.progress-bar { background-color: var(--tc-fill-accent); }
+.badge.bg-primary { background-color: var(--tc-primary) !important; color: var(--tc-secondary); }
+.badge.bg-info, .badge.bg-focus, .badge.bg-alternate { background-color: var(--tc-fill-accent) !important; color: #fff; }
+.card { border-color: var(--tc-border); }
+.list-group { --bs-list-group-active-bg: var(--tc-primary); --bs-list-group-active-border-color: var(--tc-primary); --bs-list-group-active-color: var(--tc-secondary); }
+.table { --bs-table-hover-bg: color-mix(in srgb, var(--tc-text) 4%, transparent); }
+.btn-close:focus { box-shadow: 0 0 0 .2rem rgba(var(--tc-accent-rgb), .25); }
+::selection { background: var(--tc-accent-soft); color: var(--tc-text); }
+
+/* ---------- 9. Leftover template colors ---------- */
+:root,
+[data-bs-theme=light],
+[data-bs-theme=dark] { --bs-code-color: var(--tc-accent); }
+.hamburger-inner,
+.hamburger-inner::before,
+.hamburger-inner::after { background-color: var(--tc-text-muted); }
+.search-wrapper .input-holder .search-icon { background: var(--tc-accent-soft); }
+.search-wrapper .input-holder .search-icon span::after { border-color: var(--tc-accent); }
+.search-wrapper .input-holder .search-icon span::before { background: var(--tc-accent); }
+.card-header { color: var(--tc-text); }

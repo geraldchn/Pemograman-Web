@@ -37,8 +37,8 @@
         ['Gray 900', '--tc-gray-900', '#111827'],
     ];
     $semantic = [
-        ['Success', '--tc-success', '#16A34A', 'Completed service, paid, approved'],
-        ['Warning', '--tc-warning', '#D97706', 'Pending, waiting for parts, reminders'],
+        ['Success', '--tc-success', '#15803D', 'Completed service, paid, approved'],
+        ['Warning', '--tc-warning', '#B45309', 'Pending, waiting for parts, reminders'],
         ['Danger',  '--tc-danger',  '#DC2626', 'Errors, cancelled, destructive actions'],
         ['Info',    '--tc-info',    '#2563EB', 'Same as Accent. Neutral information'],
     ];
@@ -52,7 +52,7 @@
                 Style Guide
                 <div class="page-title-subheading">
                     Design rules for developers. Click any swatch to copy its CSS variable.
-                    Tokens live in <code>public/css/techcare-tokens.css</code>.
+                    Tokens live in <code>public/css/techcare-tokens.css</code>; the template is re-skinned globally by <code>public/css/techcare-theme.css</code>.
                 </div>
             </div>
         </div>
@@ -142,8 +142,8 @@
                         ['#FFFFFF', '#2563EB', 'White on Accent'],
                         ['#2563EB', '#FFFFFF', 'Accent on White (links)'],
                         ['#6B7280', '#FFFFFF', 'Muted gray on White'],
-                        ['#FFFFFF', '#16A34A', 'White on Success'],
-                        ['#FFFFFF', '#D97706', 'White on Warning'],
+                        ['#FFFFFF', '#15803D', 'White on Success'],
+                        ['#FFFFFF', '#B45309', 'White on Warning'],
                         ['#FFFFFF', '#DC2626', 'White on Danger'],
                     ] as [$fg, $bg, $label])
                         <tr data-fg="{{ $fg }}" data-bg="{{ $bg }}">
@@ -241,6 +241,43 @@
                 <li>Put more than one Accent button on a screen.</li>
                 <li>Use gradient backgrounds on app pages (login page is the only exception).</li>
             </ul></div></div>
+    </div>
+</div>
+
+{{-- 10. Logo --}}
+<div class="sg-section">
+    <h5 class="mb-3">10. Logo</h5>
+    <div class="row g-3">
+        @foreach ([
+            ['Icon + text', 'icon-text', 'Default. Header, login, emails.'],
+            ['Icon only', 'icon', 'Favicon, collapsed sidebar, app icon, tight spaces.'],
+            ['Text only', 'text', 'Footers or places where the icon already appears nearby.'],
+        ] as [$label, $file, $use])
+            <div class="col-md-4">
+                <div class="sg-swatch" style="cursor:default">
+                    <div class="d-flex align-items-center justify-content-center" style="height:110px;background:#fff;border-bottom:1px solid var(--tc-border)">
+                        <img src="{{ asset("images/logo/{$file}-on-light.png") }}" alt="{{ $label }} on light" style="max-height:48px;max-width:80%">
+                    </div>
+                    <div class="d-flex align-items-center justify-content-center" style="height:110px;background:#0a0a0a">
+                        <img src="{{ asset("images/logo/{$file}-on-dark.png") }}" alt="{{ $label }} on dark" style="max-height:48px;max-width:80%">
+                    </div>
+                    <div class="sg-meta">
+                        <strong>{{ $label }}</strong>
+                        <div class="muted">{{ $use }}</div>
+                        <div class="mt-1"><code>images/logo/{{ $file }}-on-light.png</code></div>
+                        <div><code>images/logo/{{ $file }}-on-dark.png</code></div>
+                    </div>
+                </div>
+            </div>
+        @endforeach
+    </div>
+    <div class="sg-demo mt-3">
+        <ul class="small mb-0">
+            <li><strong>Pick by background:</strong> <code>-on-light</code> for white/light surfaces (black + blue), <code>-on-dark</code> for black/dark surfaces (white + blue). The original logo has white lettering, so the <code>-on-dark</code> files are never usable on white.</li>
+            <li>Minimum height: 24px for icon + text, 16px for icon only. Keep clear space around the logo equal to the height of the "T" bar.</li>
+            <li>Do not recolor, stretch, rotate, or add shadows. Original artwork lives in <code>public/images/logo/source/</code>.</li>
+            <li>Header and sidebar already switch logo automatically with light/dark mode (see <code>techcare-theme.css</code>).</li>
+        </ul>
     </div>
 </div>
 

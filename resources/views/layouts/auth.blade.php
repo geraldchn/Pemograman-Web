@@ -8,25 +8,26 @@
     <script>
         document.documentElement.setAttribute('data-bs-theme', localStorage.getItem('theme') || 'light');
     </script>
-    <link rel="icon" href="{{ asset('architectui/favicon.ico') }}">
+    <link rel="icon" type="image/png" href="{{ asset('images/logo/favicon.png') }}">
     <link href="{{ asset('architectui/assets/styles/main.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/techcare-tokens.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/techcare-theme.css') }}" rel="stylesheet">
     <style>
         .auth-box { max-width: 460px; width: 100%; }
         .auth-brand { text-align: center; color: #fff; margin-bottom: 1.25rem; }
-        .auth-brand img { height: 44px; }
-        .auth-brand h3 { font-weight: 700; margin: .5rem 0 0; }
+        .auth-bg { background: radial-gradient(circle at 50% 0%, rgba(37,99,235,.35), transparent 55%), #0a0a0a; }
+        .auth-logo { height: 52px; width: auto; margin-bottom: .75rem; }
         .auth-brand p { opacity: .85; margin: 0; }
         [data-bs-theme="dark"] .auth-card { background-color: #212529; }
     </style>
 </head>
 <body>
 <div class="app-container app-theme-white">
-    <div class="h-100 bg-plum-plate bg-animation" style="min-height:100vh">
+    <div class="h-100 auth-bg" style="min-height:100vh">
         <div class="d-flex justify-content-center align-items-center p-3" style="min-height:100vh">
             <div class="auth-box">
                 <div class="auth-brand">
-                    <img src="{{ asset('architectui/assets/images/logo-inverse.png') }}" alt="Techcare">
-                    <h3>Techcare</h3>
+                    <img src="{{ asset('images/logo/icon-text-on-dark.png') }}" alt="Techcare" class="auth-logo">
                     <p>Laptop service &amp; maintenance, made easy.</p>
                 </div>
 
