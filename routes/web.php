@@ -22,6 +22,10 @@ Route::middleware('auth')->group(function () {
     Route::put('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::put('/profile/password', [ProfileController::class, 'updatePassword'])->name('profile.password');
 
+    Route::view('/bookings', 'bookings.index')->name('bookings.index');
+    Route::view('/bookings/create', 'bookings.create')->name('bookings.create');
+    Route::view('/bookings/detail', 'bookings.show')->name('bookings.show');
+
     // Admin only: manage all users.
     Route::middleware('role:admin')->group(function () {
         Route::resource('users', UserController::class)->except('show');

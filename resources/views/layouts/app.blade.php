@@ -155,6 +155,13 @@
                             </a>
                         </li>
 
+                        <li class="app-sidebar__heading">Techcare</li>
+                            <li>
+                                <a href="{{ route('bookings.index') }}" class="{{ request()->routeIs('bookings.*') ? 'mm-active' : '' }}">
+                                    <i class="metismenu-icon pe-7s-date"></i> Booking Servis
+                                </a>
+                            </li>
+                            
                         {{-- Tambahkan menu Techcare di sini --}}
                     </ul>
                 </div>
