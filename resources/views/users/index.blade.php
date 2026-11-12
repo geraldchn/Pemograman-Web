@@ -115,3 +115,28 @@
         </div>
     </div>
 @endsection
+
+@extends('layouts.app')
+
+@section('title', 'Riwayat Booking')
+
+@section('content')
+<div class="app-page-title">
+    <div class="page-title-wrapper">
+        <div class="page-title-heading">
+            <div class="page-title-icon">
+                <i class="pe-7s-date icon-gradient bg-mean-fruit"></i>
+            </div>
+            <div>Riwayat Booking
+                <div class="page-title-subheading">Daftar pemesanan servis laptop Anda.</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="main-card mb-3 card">
+    <div class="card-body">
+        <p class="mb-0">Jalur route, view, dan layout berhasil terhubung.</p>
+    </div>
+</div>
+@endsection
