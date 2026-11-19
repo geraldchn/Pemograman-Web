@@ -240,6 +240,7 @@
                 <li>Use blue for decoration or red/green for anything but status.</li>
                 <li>Put more than one Accent button on a screen.</li>
                 <li>Use gradient backgrounds on app pages (login page is the only exception).</li>
+                <li>Use <code>.h-100</code>: this template maps it to <code>100vh</code> (full screen height). For equal-height cards use <code>d-flex</code> on the column and <code>w-100</code> on the card.</li>
             </ul></div></div>
     </div>
 </div>

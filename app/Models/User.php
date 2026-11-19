@@ -34,6 +34,11 @@ class User extends Authenticatable
         ];
     }
 
+    public function laptops(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(Laptop::class);
+    }
+
     public function hasRole(string ...$roles): bool
     {
         return in_array($this->role, $roles, true);

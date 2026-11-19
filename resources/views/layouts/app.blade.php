@@ -16,6 +16,7 @@
     <link href="{{ asset('architectui/assets/styles/main.css') }}" rel="stylesheet">
     <link href="{{ asset('css/techcare-tokens.css') }}" rel="stylesheet">
     <link href="{{ asset('css/techcare-theme.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/techcare-laptop3d.css') }}" rel="stylesheet">
     @stack('styles')
     <style>
     [data-bs-theme="dark"] .app-main__outer { background: #14171a; }
@@ -30,6 +31,7 @@
     </style>
 
     <script defer src="{{ asset('architectui/assets/scripts/main.js') }}"></script>
+    <script defer src="{{ asset('js/techcare-laptop3d.js') }}"></script>
     <script defer src="{{ asset('architectui/assets/scripts/demo.js') }}"></script>
     <script defer src="{{ asset('architectui/assets/scripts/toastr.js') }}"></script>
     <script defer src="{{ asset('architectui/assets/scripts/scrollbar.js') }}"></script>
@@ -138,6 +140,25 @@
                                 <i class="metismenu-icon pe-7s-user"></i> My Profile
                             </a>
                         </li>
+
+                        @if (auth()->user()->hasRole('admin', 'customer'))
+                            @php
+                                $trackingActive = request()->routeIs('tracking.*')
+                                    || (request()->routeIs('laptops.show') && request('from') === 'tracking');
+                                $laptopsActive = request()->routeIs('laptops.*') && ! $trackingActive;
+                            @endphp
+                            <li>
+                                <a href="{{ route('laptops.index') }}" class="{{ $laptopsActive ? 'mm-active' : '' }}">
+                                    <i class="metismenu-icon pe-7s-note2"></i>
+                                    {{ auth()->user()->hasRole('admin') ? 'Laptops' : 'My Laptops' }}
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ route('tracking.index') }}" class="{{ $trackingActive ? 'mm-active' : '' }}">
+                                    <i class="metismenu-icon pe-7s-tools"></i> Service Tracking
+                                </a>
+                            </li>
+                        @endif
 
                         @if (auth()->user()->hasRole('admin'))
                             <li class="app-sidebar__heading">Administration</li>

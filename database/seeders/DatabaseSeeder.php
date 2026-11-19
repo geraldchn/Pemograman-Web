@@ -24,5 +24,8 @@ class DatabaseSeeder extends Seeder
                 ['name' => $name, 'role' => $role, 'password' => 'password123', 'phone' => '081234567890']
             );
         }
+
+        // Simulated laptops, bookings, and progress timelines (until those modules exist).
+        $this->call(ServiceDemoSeeder::class);
     }
 }
