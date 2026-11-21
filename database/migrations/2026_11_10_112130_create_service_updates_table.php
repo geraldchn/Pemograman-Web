@@ -8,21 +8,19 @@ return new class extends Migration
 {
     public function up(): void
     {
-        // One row per progress update on a booking (the timeline).
-        Schema::create('service_updates', function (Blueprint $table) {
+        Schema::create('servis', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('service_booking_id')->constrained()->cascadeOnDelete();
-            $table->foreignId('user_id')->nullable()->constrained()->nullOnDelete(); // admin who wrote it
-            $table->string('status', 30);
-            $table->text('note');
+            $table->string('kode_servis')->unique();
+            $table->string('nama_pelanggan');
+            $table->string('jenis_layanan');
+            $table->text('keluhan')->nullable();
+            $table->enum('status', ['menunggu', 'diproses', 'selesai'])->default('menunggu');
             $table->timestamps();
-
-            $table->index(['service_booking_id', 'id']);
         });
     }
 
     public function down(): void
     {
-        Schema::dropIfExists('service_updates');
+        Schema::dropIfExists('servis');
     }
 };
