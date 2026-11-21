@@ -3,10 +3,13 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\LaptopController;
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\ServiceTrackingController;
+use App\Http\Controllers\ServiceTrackingController; 
+use App\Http\Controllers\PenilaianController;
+use App\Http\Controllers\ServisController;
 use App\Http\Controllers\ServiceUpdateController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PembayaranPenilaianController;
 
 Route::middleware('guest')->group(function () {
     Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
@@ -19,6 +22,14 @@ Route::middleware('auth')->group(function () {
     Route::get('/', fn () => view('dashboard'))->name('dashboard');
     Route::view('/style-guide', 'style-guide')->name('style-guide');
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+    Route::get('/pembayaran', [PembayaranPenilaianController::class, 'pembayaranIndex'])->name('pembayaran.index');
+    Route::post('/pembayaran', [PembayaranPenilaianController::class, 'storePembayaran'])->name('pembayaran.store');
+    Route::patch('/pembayaran/{pembayaran}/status', [PembayaranPenilaianController::class, 'updateStatusPembayaran'])->name('pembayaran.status');
+
+    Route::get('/penilaian', [PembayaranPenilaianController::class, 'penilaianIndex'])->name('penilaian.index');
+    Route::post('/penilaian', [PembayaranPenilaianController::class, 'storePenilaian'])->name('penilaian.store');
+    Route::put('/penilaian/{penilaian}', [PembayaranPenilaianController::class, 'updatePenilaian'])->name('penilaian.update');
+    Route::delete('/penilaian/{penilaian}', [PembayaranPenilaianController::class, 'destroyPenilaian'])->name('penilaian.destroy');
 
     // Every logged-in user can only see/edit their OWN profile.
     Route::get('/profile', [ProfileController::class, 'show'])->name('profile');
