@@ -182,6 +182,16 @@
                                     <i class="metismenu-icon pe-7s-date"></i> Booking Servis
                                 </a>
                             </li>
+                        <li>
+                              <a href="{{ route('pembayaran.index') }}" class="{{ request()->routeIs('pembayaran.*') ? 'mm-active' : '' }}">
+                                    <i class="metismenu-icon pe-7s-credit"></i> Pembayaran Servis
+                           </a>
+                            </li>
+                        <li>
+                           <a href="{{ route('penilaian.index') }}" class="{{ request()->routeIs('penilaian.*') ? 'mm-active' : '' }}">
+                                    <i class="metismenu-icon pe-7s-star"></i> Penilaian Layanan
+                           </a>
+                            </li>
                             
                         {{-- Tambahkan menu Techcare di sini --}}
                     </ul>
