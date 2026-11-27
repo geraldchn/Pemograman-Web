@@ -10,6 +10,21 @@ use App\Http\Controllers\ServiceUpdateController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PembayaranPenilaianController;
+use App\Http\Controllers\BengkelController;
+
+// Modul 1: Pengelolaan Profil Bengkel (Admin Bengkel)
+    Route::middleware('role:admin,admin_bengkel')->group(function () {
+        Route::get('/bengkels', [BengkelController::class, 'index'])->name('bengkels.index');
+        Route::get('/bengkels/create', [BengkelController::class, 'create'])->name('bengkels.create');
+        Route::post('/bengkels', [BengkelController::class, 'store'])->name('bengkels.store');
+        Route::get('/bengkels/{bengkel}/edit', [BengkelController::class, 'edit'])->whereNumber('bengkel')->name('bengkels.edit');
+        Route::put('/bengkels/{bengkel}', [BengkelController::class, 'update'])->whereNumber('bengkel')->name('bengkels.update');
+        Route::patch('/bengkels/{bengkel}/toggle-status', [BengkelController::class, 'toggleStatus'])->whereNumber('bengkel')->name('bengkels.toggle-status');
+        Route::delete('/bengkels/{bengkel}', [BengkelController::class, 'destroy'])->whereNumber('bengkel')->name('bengkels.destroy');
+    });
+
+    // Modul 1: Detail Profil Bengkel (Dapat dilihat Customer & Admin)
+    Route::get('/bengkels/{bengkel}', [BengkelController::class, 'show'])->whereNumber('bengkel')->name('bengkels.show');
 
 Route::middleware('guest')->group(function () {
     Route::get('/login', [AuthController::class, 'showLogin'])->name('login');

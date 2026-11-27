@@ -192,6 +192,13 @@
                                     <i class="metismenu-icon pe-7s-star"></i> Penilaian Layanan
                            </a>
                             </li>
+                            @if (auth()->user()->hasRole('admin', 'admin_bengkel'))
+                            <li>
+                                <a href="{{ route('bengkels.index') }}" class="{{ request()->routeIs('bengkels.*') ? 'mm-active' : '' }}">
+                                    <i class="metismenu-icon pe-7s-home"></i> Kelola Bengkel
+                                </a>
+                            </li>
+                        @endif
                             
                         {{-- Tambahkan menu Techcare di sini --}}
                     </ul>
